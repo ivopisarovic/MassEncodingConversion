@@ -5,6 +5,7 @@ MassEncodingConversion
 
 * **!** It is strongly recommended to **backup** all files before running this script.
 * **!** All files must be either in the entered source encoding or in the target encoding, **not mixed up** with other encodings.  
+* **!** If you have too many files, *max_execution_time* can be reached. Try running it again, it should be faster. Last converted file is logged in *MassEncodingConversion.log*. 
 
 ###Default example
 Converts all text files in the **current** directory from *windows-1250* 
