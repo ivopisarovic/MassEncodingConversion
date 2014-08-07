@@ -81,6 +81,6 @@ $a=new MassEncodingConversion($from,$to);
 //You can set excluded directories and files like this:
 $a->setExcluded(array("soubory","./_data")); 
 
-//And run scanning current directory
+//And run scanning the current directory
 $a->run();
 
