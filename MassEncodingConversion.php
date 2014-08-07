@@ -6,6 +6,7 @@
 *
 * **!** It is strongly recommended to **backup** all files before running this script.
 * **!** All files must be either in the entered source encoding or in the target encoding, **not mixed up** with other encodings. 
+* **!** If you have too many files, *max_execution_time* can be reached. Try running it again, it should be faster. Last converted file is logged in *MassEncodingConversion.log*. 
 *
 */
 
@@ -40,7 +41,7 @@ class MassEncodingConversion{
 			echo "Converted: ".$path."<br>";
 			$converted=iconv($this->sourceEncoding, $this->targetEncoding, $source);
 			file_put_contents($path,$converted);
-			file_put_contents("win1250toutf8.log","Last converted: ".$path);
+			file_put_contents("MassEncodingConversion.log","Last converted: ".$path);
 		}
 	}
 	
