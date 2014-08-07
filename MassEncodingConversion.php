@@ -71,11 +71,16 @@ class MassEncodingConversion{
 	}			   
 }
 
-//RUN
+//INIT
 $from='windows-1250';
 $to='UTF-8';
 
-$a=new MassEncodingConversion($from,$to);
-$a->setExcluded(array("soubory","./_data"));
+// The constructor requires source and target encoding name. 
+$a=new MassEncodingConversion($from,$to); 
+
+//You can set excluded directories and files like this:
+$a->setExcluded(array("soubory","./_data")); 
+
+//And run
 $a->run();
 
