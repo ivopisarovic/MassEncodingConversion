@@ -4,9 +4,9 @@
 * (c)2014 Ivo Pisařovic, http://pisarovic.cz
 *
 * Converts all text files to UTF-8.
-* http://github.com/ivopisarovic/MassEncodingConversion
+* http://github.com/fajnweb/MassEncodingConversion
 *
-* **!** It is strongly recommended to **backup** all files before running this script. Sometimes it deleted the whole file if a very special character was found. 
+* **!** It is strongly recommended to **backup** all files before running this script. Sometimes it deleted the whole file if a very special character is found. 
 * **!** All files must be either in the entered source encoding or in UTF-8, **not mixed up** with other encodings. 
 * **!** If you have too many files, *max_execution_time* can be reached. Try running it again, it should be faster. 
 *
@@ -33,6 +33,14 @@ class MassEncodingConversion{
 		"ereg_replace("=>"mb_ereg_replace(",
 		"eregi_replace("=>"mb_eregi_replace(",
 		"split("=>"mb_split("
+	);
+	
+	private $PROBLEMATIC=array(
+		"strtr"=>"do not use a string as 'from' parameter, use an array of pairs instead", 
+		"set names"=>"warning: check name settings in db connection",
+		"iconv"=>"check iconv()",
+		$this->sourceEncoding=>"source encoding name ".$this->sourceEncoding." occured, check it",
+		$this->targetEncoding=>"target encoding name ".$this->targetEncoding." occured, check it"
 	);
 	
 	private 
@@ -66,15 +74,8 @@ class MassEncodingConversion{
 	
 	/// Detects if code contains some functions that have problems with UTF-8
 	private function detectProblems($text){
-		$problematic=array(
-			"strtr"=>"do not use a string as 'from' parameter, use an array of pairs instead", 
-			"set names"=>"warning: check name settings in db connection",
-			"iconv"=>"check iconv()",
-			$this->sourceEncoding=>"source encoding name ".$this->sourceEncoding." occured, check it",
-			$this->targetEncoding=>"target encoding name ".$this->targetEncoding." occured, check it"
-		);
 		$pattern="/";
-		foreach($problematic as $k=>$v){
+		foreach($this->PROBLEMATIC as $k=>$v){
 			$pattern.="(".$k.")|";
 		}
 		$pattern=substr($pattern,0,-1)."/i";
