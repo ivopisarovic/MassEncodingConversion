@@ -13,7 +13,7 @@ to *UTF-8*, excluding files in directories *soubory* and *_data*.
 ```
 $from='windows-1250';
 $to='UTF-8';
-$defaultDirectory='.'; //current directory
+$defaultDirectory='.'; //start in the current directory
 
 // The constructor requires source and target encoding name. 
 $a=new MassEncodingConversion($from,$to); 
