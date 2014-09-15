@@ -1,7 +1,7 @@
 MassEncodingConversion
 ======================
 
-**PHP script to convert all text files to a new encoding. **
+**PHP script to convert all text files to a new encoding. It replaces problematic string functions (e.g. substr is replacedby mb_substr) and show warnings for next possible problems (e.g. using iconv). **
 
 * **!** It is strongly recommended to **backup** all files before running this script. Sometimes it deleted the whole file if a very special character occured. 
 * **!** All files must be either in the entered source encoding or in UTF-8, **not mixed up** with other encodings. 
