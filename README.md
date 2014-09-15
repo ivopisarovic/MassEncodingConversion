@@ -12,14 +12,13 @@ Converts all text files in the **current** directory from *windows-1250*
 to *UTF-8*, excluding files in directories *soubory* and *_data*. 
 ```
 $from='windows-1250';
-$to='UTF-8';
-$defaultDirectory='.'; //start in the current directory
+$defaultDirectory='..'; //current directory
 
-// The constructor requires source and target encoding name. 
-$a=new MassEncodingConversion($from,$to); 
+// The constructor requires the source encoding name. 
+$a=new MassEncodingConversion($from); 
 
 //You can set excluded directories and files like this:
-$a->setExcluded(array("soubory","./_data")); 
+$a->setExcluded(array("foto","soubory","./_data")); 
 
 //And run scanning in the entered directory
 $a->run($defaultDirectory);
