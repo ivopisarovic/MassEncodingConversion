@@ -9,7 +9,7 @@ MassEncodingConversion
 
 ###Default example
 Converts all text files in the **current** directory from *windows-1250* 
-to *UTF-8*, excluding files in directories *soubory* and *_data*. 
+to *UTF-8*, excluding files in directories *foto*, *soubory* and *_data*. 
 ```
 $from='windows-1250';
 $defaultDirectory='..'; //current directory
