@@ -4,9 +4,9 @@
 * (c)2014 Ivo Pisařovic, http://pisarovic.cz
 *
 * Converts all text files to UTF-8.
-* http://github.com/fajnweb/MassEncodingConversion
+* http://github.com/ivopisarovic/MassEncodingConversion
 *
-* **!** It is strongly recommended to **backup** all files before running this script. Sometimes it deleted the whole file if a very special character is found. 
+* **!** It is strongly recommended to **backup** all files before running this script. Sometimes it deleted the whole file if a very special character was found. 
 * **!** All files must be either in the entered source encoding or in UTF-8, **not mixed up** with other encodings. 
 * **!** If you have too many files, *max_execution_time* can be reached. Try running it again, it should be faster. 
 *
