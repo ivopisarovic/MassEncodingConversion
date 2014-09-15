@@ -93,8 +93,10 @@ class MassEncodingConversion{
 	
 	private function convert($path){
 		$source=file_get_contents($path);
+		
 		$ext=strrpos(".",$path);
 		$ext=strtolower(substr($path,$ext+1));
+		
 		//echo $path;
 		if($this->isEncoded($source))
 			echo "Already in ".$this->targetEncoding.": ".$path."<br>";
