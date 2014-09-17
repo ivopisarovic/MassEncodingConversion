@@ -13,7 +13,7 @@
 */
 
 class MassEncodingConversion{
-	
+		
 	private $MULTIBYTE_FUNCTIONS=array(
 		"mail("=>"mb_send_mail(",
 		"strlen("=>"mb_strlen(",
@@ -35,21 +35,21 @@ class MassEncodingConversion{
 		"split("=>"mb_split("
 	);
 	
-	private $PROBLEMATIC=array(
-		"strtr"=>"do not use a string as 'from' parameter, use an array of pairs instead", 
-		"set names"=>"warning: check name settings in db connection",
-		"iconv"=>"check iconv()",
-		$this->sourceEncoding=>"source encoding name ".$this->sourceEncoding." occured, check it",
-		$this->targetEncoding=>"target encoding name ".$this->targetEncoding." occured, check it"
-	);
-	
 	private 
 		$sourceEncoding,
 		$targetEncoding='UTF-8',
-		$exclude=array(); 
+		$exclude=array(),
+		$PROBLEMATIC;
 	
 	public function __construct($sourceEncoding){
 		$this->sourceEncoding=$sourceEncoding;
+		$this->PROBLEMATIC=array(
+			"strtr"=>"do not use a string as 'from' parameter, use an array of pairs instead", 
+			"set names"=>"warning: check name settings in db connection",
+			"iconv"=>"check iconv()",
+			$this->sourceEncoding=>"source encoding name ".$this->sourceEncoding." occured, check it",
+			$this->targetEncoding=>"target encoding name ".$this->targetEncoding." occured, check it"
+		);
 	}
 	
 	public function setExcluded($files){
@@ -93,10 +93,8 @@ class MassEncodingConversion{
 	
 	private function convert($path){
 		$source=file_get_contents($path);
-		
 		$ext=strrpos(".",$path);
 		$ext=strtolower(substr($path,$ext+1));
-		
 		//echo $path;
 		if($this->isEncoded($source))
 			echo "Already in ".$this->targetEncoding.": ".$path."<br>";
